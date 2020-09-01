@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const low = require('lowdb')
+const shortid = require('shortid');
 
 const FileSync = require('lowdb/adapters/FileSync')
 
@@ -31,6 +32,14 @@ app.get('/users', (req, res) => {
   })
 })
 
+app.get('/users/:id', (req, res) => {
+  const id = req.params.id
+  const user = db.get("users").find({ id: id }).value()
+  res.render("users/view", {
+    user: user
+  })
+})
+
 app.get('/users/search', (req, res) => {
   const { q } = req.query
   const matchUser = db.get("users").value().filter((user) => user.name.indexOf(q) !== -1)
@@ -44,7 +53,11 @@ app.get('/users/create', (req, res) => {
 })
 
 app.post('/users/create', (req, res) => {
-  db.get("users").push(req.body).write()
+  const users = db.get("users").value()
+  db.get("users").push({
+    id: shortid.generate(),
+    ...req.body
+  }).write()
   res.redirect('/users')
 })
 
