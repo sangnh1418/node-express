@@ -23,10 +23,6 @@ const users = [
   {
     name: "Son",
     age: 20,
-  },
-  {
-    name: "Quang",
-    age: 20,
   }
 ]
 app.get('/users', (req, res) => {
