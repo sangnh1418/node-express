@@ -1,8 +1,18 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const low = require('lowdb')
+
+const FileSync = require('lowdb/adapters/FileSync')
+
+const adapter = new FileSync('db.json')
+const db = low(adapter)
 
 const app = express()
 const port = 5000
+
+// Set some defaults (required if your JSON file is empty)
+db.defaults({ users: [] })
+  .write()
 
 app.set('views', './views')
 
@@ -15,25 +25,15 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'node-express-coder-tokyo', message: 'Node Express' })
 })
 
-const users = [
-  {
-    name: "Sang",
-    age: 20,
-  },
-  {
-    name: "Son",
-    age: 20,
-  }
-]
 app.get('/users', (req, res) => {
   res.render('users/index', {
-    users
+    users: db.get("users").value()
   })
 })
 
 app.get('/users/search', (req, res) => {
   const { q } = req.query
-  const matchUser = users.filter((user) => user.name.indexOf(q) !== -1)
+  const matchUser = db.get("users").value().filter((user) => user.name.indexOf(q) !== -1)
   res.render('users/index', {
     users: matchUser
   })
@@ -44,7 +44,7 @@ app.get('/users/create', (req, res) => {
 })
 
 app.post('/users/create', (req, res) => {
-  users.push(req.body)
+  db.get("users").push(req.body).write()
   res.redirect('/users')
 })
 
