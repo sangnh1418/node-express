@@ -2,15 +2,16 @@
 const db = require("../db")
 
 module.exports.requiredMiddleware = (req, res, next) => {
-  const cookie = req.cookies
-  if (!cookie.user_id) {
+  const signedCookies = req.signedCookies
+  if (!signedCookies.user_id) {
     res.redirect('/login')
     return;
   }
-  const userId = db.get("users").find({ id: cookie.user_id })
-  if (!userId) {
+  const user = db.get("users").find({ id: signedCookies.user_id }).value()
+  if (!user) {
     res.redirect('/login')
     return;
   }
+  res.locals.user = user
   next()
 }

@@ -13,6 +13,7 @@ html
               | Home 
               span.sr-only (current)
           li.nav-item
-            a.nav-link(href='/users') Users      
+            a.nav-link(href='/users') Users  
+      p=user && user.name ? user.name : ""         
     .container
       block content

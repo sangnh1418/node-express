@@ -19,7 +19,7 @@ app.use(express.static('public'))
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-app.use(cookieParser())
+app.use(cookieParser("e10adc3949ba59abbe56e057f20f883e"))
 
 app.get('/', (req, res) => {
   res.render('index', { title: 'node-express-coder-tokyo', message: 'Home' })
