@@ -9,6 +9,7 @@ const port = 5000
 
 const userRoute = require("./routes/users.route")
 const authRoute = require("./routes/auth.route")
+const productsRoute = require("./routes/products.route")
 
 const authMiddleware = require('./middlewares/auth.middleware')
 
@@ -29,6 +30,7 @@ app.get('/', (req, res) => {
 
 app.use("/users", authMiddleware.requiredMiddleware, userRoute)
 app.use("/login", authRoute)
+app.use("/products", productsRoute)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
