@@ -1,9 +1,12 @@
 const express = require('express')
+const multer = require('multer')
 
 const router = express.Router()
 
 const controllers = require('../controllers/users.controller')
 const validate = require('../validate/users.validate')
+
+var upload = multer({ dest: './public/uploads/' })
 
 router.get('/', controllers.index)
 
@@ -17,6 +20,6 @@ router.get('/search', controllers.search)
 
 router.get('/create', controllers.create)
 
-router.post('/create', validate.postCreate, controllers.postCreate)
+router.post('/create', upload.single('avatar'), validate.postCreate, controllers.postCreate)
 
 module.exports = router

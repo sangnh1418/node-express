@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const express = require('express')
 const bodyParser = require('body-parser')
-var cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser')
 
 const app = express()
 const port = 5000

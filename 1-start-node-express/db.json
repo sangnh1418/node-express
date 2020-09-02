@@ -5,32 +5,20 @@
       "name": "The Sunshine",
       "phone": "0355199785",
       "email": "sangolariel14@gmail.com",
-      "password": "e10adc3949ba59abbe56e057f20f883e"
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "avatar": "uploads\\631536dde13f89f30e0d9ebaa5e18626"
     },
     {
-      "id": "kvI7tUm6o",
-      "name": "Sang",
-      "phone": "123456"
+      "id": "ORfVrJ-vz",
+      "avatar": "uploads\\631536dde13f89f30e0d9ebaa5e18626",
+      "name": "Olariel",
+      "phone": "0522582475"
     },
     {
-      "id": "rHcbm0Gs0",
-      "name": "",
-      "phone": ""
-    },
-    {
-      "id": "7PaDgSi7w",
-      "name": "",
-      "phone": ""
-    },
-    {
-      "id": "os9ZtRwwP",
-      "name": "Sang Olariel",
+      "id": "BH8SzVd__",
+      "avatar": "uploads\\bf98253cf1340570e3eff451739245ea",
+      "name": "Coder.Tokyo",
       "phone": "0355199785"
-    },
-    {
-      "id": "UhIZ30tmu",
-      "name": "Sang",
-      "phone": "123456"
     }
   ],
   "products": [

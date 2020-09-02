@@ -31,6 +31,7 @@ module.exports.create = (req, res) => {
 module.exports.postCreate = (req, res) => {
   db.get("users").push({
     id: shortid.generate(),
+    avatar: req.file.path.split("\\").slice(1).join("\\"),
     ...req.body
   }).write()
   res.redirect('/users')
