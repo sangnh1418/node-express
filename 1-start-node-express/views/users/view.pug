@@ -1,2 +1,6 @@
-h1 View User
-//- h2= user.name
+extends ../layouts/common
+block content
+  h2 View User
+  #user
+    if user.name 
+      h3=  user.name
