@@ -10,7 +10,6 @@ router.get('/', controllers.index)
 // router.get('/:id', controllers.id)
 
 router.get('/cookie', (req, res, next) => {
-  res.cookie("user", "123456")
   res.send('Demo cookie')
 })
 
