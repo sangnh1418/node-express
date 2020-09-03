@@ -628,5 +628,35 @@
       "image": "https://picsum.photos/200",
       "description": "auctor sed tristique in tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis"
     }
+  ],
+  "sessions": [
+    {
+      "id": "MQzhjGgmD",
+      "cart": {
+        "9bba6c5e-4979-443d-8b4b-205037281068": 1,
+        "722f1109-5a43-42f4-9379-794622bea2b6": 2
+      }
+    },
+    {
+      "id": "s6-oDBXSx"
+    },
+    {
+      "id": "XSJRJWxeW"
+    },
+    {
+      "id": "ElMumY2nA",
+      "cart": {
+        "722f1109-5a43-42f4-9379-794622bea2b6": 2,
+        "9bba6c5e-4979-443d-8b4b-205037281068": 1,
+        "78cb3327-ef7d-4540-9a95-a1c802e1cd0e": 1,
+        "af381e89-f723-4e26-8b17-b13e0de32192": 1
+      }
+    },
+    {
+      "id": "6rkWgmNTO",
+      "cart": {
+        "722f1109-5a43-42f4-9379-794622bea2b6": 1
+      }
+    }
   ]
 }

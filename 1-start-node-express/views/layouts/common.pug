@@ -16,6 +16,8 @@ html
             a.nav-link(href='/users') Users  
           li.nav-item
             a.nav-link(href='/products') Products  
+          li.nav-item
+            p.nav-link=`Cart (${countCart || 0})`  
       p=user && user.name ? user.name : ""         
     .container
       block content
