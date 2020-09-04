@@ -1,25 +1,30 @@
 const db = require("../db")
-const shortid = require('shortid')
 
-module.exports.index = (req, res) => {
+const Users = require("../models/users.model")
+
+module.exports.index = async (req, res) => {
+  const usersData = await Users.find()
   res.render('users/index', {
-    users: db.get("users").value()
+    users: usersData
   })
 }
 
-module.exports.search = (req, res) => {
+module.exports.search = async (req, res) => {
   const { q } = req.query
-  const matchUser = db.get("users").value().filter((user) => user.name.indexOf(q) !== -1)
+  /*mongonose query  params*/
+  const users = await Users.find()
+  const matchUser = users.filter((user) => user.name.indexOf(q) !== -1)
   res.render('users/index', {
     users: matchUser
   })
 }
 
-module.exports.id = (req, res) => {
-  const id = req.params.id
-  const user = db.get("users").find({ id: id }).value()
+module.exports.id = async (req, res) => {
+  const { id } = req.params
+  /*mongonose query  params*/
+  const user = await Users.findById(id).exec()
   res.render("users/view", {
-    user: user
+    user
   })
 }
 
@@ -27,11 +32,13 @@ module.exports.create = (req, res) => {
   res.render('users/create')
 }
 
-module.exports.postCreate = (req, res) => {
-  db.get("users").push({
-    id: shortid.generate(),
+module.exports.postCreate = async (req, res) => {
+  const data = {
     avatar: req.file.path.split("\\").slice(1).join("\\"),
     ...req.body
-  }).write()
+  }
+  /*mongonose query  params*/
+  await Users.create(data)
+
   res.redirect('/users')
 }
