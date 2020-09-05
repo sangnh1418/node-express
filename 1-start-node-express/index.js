@@ -15,8 +15,11 @@ const authRoute = require("./routes/auth.route")
 const productsRoute = require("./routes/products.route")
 const cartRoute = require("./routes/cart.route")
 
+const apiProductsRoute = require('./api/routes/products.route')
+
 const authMiddleware = require('./middlewares/auth.middleware')
 const sessionMiddleware = require('./middlewares/session.middleware')
+
 
 app.set('views', './views')
 
@@ -39,6 +42,8 @@ app.use("/users", authMiddleware.requiredMiddleware, userRoute)
 app.use("/login", authRoute)
 app.use("/products", productsRoute)
 app.use("/cart", cartRoute)
+
+app.use("/api/products", apiProductsRoute)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
