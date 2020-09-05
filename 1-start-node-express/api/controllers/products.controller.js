@@ -21,3 +21,8 @@ module.exports.products = async (req, res) => {
   const productData = await Product.find()
   res.json(productData)
 }
+
+module.exports.create = async (req, res) => {
+  const product = await Product.create(req.body)
+  res.json(product)
+}
